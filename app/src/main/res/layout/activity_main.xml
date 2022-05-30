@@ -35,6 +35,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/img"
-        app:srcCompat="@drawable/10918089" />
+        app:srcCompat="@drawable/s10918089" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
