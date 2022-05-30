@@ -18,6 +18,7 @@ class Game(context: Context?, attrs: AttributeSet?) : SurfaceView(context, attrs
     var BGmoveX:Int = 0
     var fly:Fly
     var gDetector: GestureDetector
+    var mper: MediaPlayer
 
     init {
         surfaceHolder = getHolder()
@@ -25,6 +26,7 @@ class Game(context: Context?, attrs: AttributeSet?) : SurfaceView(context, attrs
         surfaceHolder.addCallback(this)
         fly = Fly(context!!)
         gDetector = GestureDetector(context, this)
+        mper = MediaPlayer()
     }
 
     override fun surfaceCreated(p0: SurfaceHolder) {
@@ -75,8 +77,12 @@ class Game(context: Context?, attrs: AttributeSet?) : SurfaceView(context, attrs
         return true
     }
 
-    override fun onShowPress(p0: MotionEvent?) {
-
+    override fun onShowPress(e: MotionEvent?) {
+        if (e!!.x >= 0 && e!!.x <= fly.w && e!!.y >= fly.y && e!!.y <= fly.y + fly.w) {
+            fly.fire = 1
+            mper = MediaPlayer.create(context, R.raw.shoot)
+            mper.start()
+        }
     }
 
     override fun onSingleTapUp(p0: MotionEvent?): Boolean {
